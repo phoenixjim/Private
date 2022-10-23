@@ -7,6 +7,7 @@ LAYOUT(GetPassLayout, 292, 84)
 	ITEM(Upp::EditString, txtPW, Tip(t_("pAssw0rd!")).LeftPosZ(28, 232).TopPosZ(16, 19))
 	ITEM(Upp::Button, ok, SetLabel(t_("Ok")).HSizePosZ(28, 208).TopPosZ(52, 15))
 	ITEM(Upp::Button, cancel, SetLabel(t_("Cancel")).LeftPosZ(204, 56).TopPosZ(52, 15))
+	ITEM(Upp::Option, optShowPW, SetLabel(t_("Show Password")).LeftPosZ(98, 96).TopPosZ(52, 16))
 END_LAYOUT
 
 LAYOUT(AddPassLayout, 400, 128)
