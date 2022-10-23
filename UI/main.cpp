@@ -14,6 +14,7 @@ public:
 
 Unlock::Unlock()
 {
+	// Check if file exists, if not, use to set initial password instead
 	CtrlLayoutOKCancel(*this, "Unlock");
 	txtPW.Password(true);
 	cancel << [=] { Close(); };
@@ -36,6 +37,7 @@ GUI_APP_MAIN
 	dlg.Close();
 	
 	Sqlite3Session sqlite3;
+	// AES 256 isn't supported? Only Chaha variants? I'll look deeper into that...
 	if(!sqlite3.Open("private.db", password)) {
 		PromptOK("Can't create or open database file, or bad password.");
 		return;
