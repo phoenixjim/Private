@@ -2,12 +2,15 @@ description "Encrypted SQLite3 db to store passwords, notes, or anything else...
 
 uses
 	CtrlLib,
-	plugin/sqlite3;
+	plugin/sqlite3,
+	Sql,
+	SqlCtrl;
 
 file
-	Private.sch,
-	Private.h,
-	main.cpp,
+	Tables/Private.sch,
+	Tables/sqlIncludes.h,
+	UI/Private.h,
+	UI/main.cpp,
 	Private.lay;
 
 mainconfig
