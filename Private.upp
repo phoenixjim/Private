@@ -1,0 +1,15 @@
+description "Encrypted SQLite3 db to store passwords, notes, or anything else...\377";
+
+uses
+	CtrlLib,
+	plugin/sqlite3;
+
+file
+	Private.sch,
+	Private.h,
+	main.cpp,
+	Private.lay;
+
+mainconfig
+	"" = "GUI";
+
