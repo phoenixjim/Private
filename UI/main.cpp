@@ -17,8 +17,6 @@ Unlock::Unlock()
 	CtrlLayoutOKCancel(*this, "Unlock");
 	txtPW.Password();
 	cancel << [=] { Close(); };
-	// ok << [=] { AddItem(); };
-
 }
 
 Private::Private()
@@ -31,7 +29,7 @@ Private::Private()
 GUI_APP_MAIN
 {
 	Unlock dlg;
-	if(dlg.Run(true) != IDOK) return;
+	if(dlg.Run() != IDOK) return;
 	String password = dlg.txtPW.GetData().ToString();
 	Sqlite3Session sqlite3;
 	if(!sqlite3.Open("private.db", password)) {
