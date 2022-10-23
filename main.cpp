@@ -6,6 +6,7 @@
 Private::Private()
 {
 	CtrlLayout(*this, "Private");
+
 }
 
 GUI_APP_MAIN
