@@ -17,33 +17,7 @@ Unlock::Unlock()
 	CtrlLayoutOKCancel(*this, "Unlock");
 	txtPW.Password();
 	cancel << [=] { Close(); };
-	ok << [=] { AddItem(); };
-
-}
-
-AddPass::AddPass()
-{
-	CtrlLayoutOKCancel(*this, "Add Password Entry");
-	ctrls
-		(PID, edtPID)
-		(SITENAME, edtSite)
-		(USERNAME, edtUName)
-		(PASSWORD, edtPWord)
-		;
-	
-}
-
-AddPass::AddItem()
-{
-	AddProduct dlg("Add Product");
-	if(dlg.Run() != IDOK)
-		return;
-	SQL * dlg.ctrls.Insert(PRODUCTS);
-
-    int id = SQL.GetInsertedId();
-
-    ProductArray.ReQuery();
-    ProductArray.FindSetCursor(id);
+	// ok << [=] { AddItem(); };
 
 }
 
@@ -52,17 +26,8 @@ Private::Private()
 	CtrlLayout(*this, "Private");
 	sqlPrivate.Appending().Removing();
 	sqlPrivate.SetTable(PRIVATE);
-	txtAddPass << [=] { AddPW(); };
+	// txtAddPass << [=] { AddPW(); };
 
-}
-
-void Private::AddPW()
-{
-	if(!ap.IsOpen()) {
-		ap.Open(this); 
-		}
-	
-	sqlPrivate.ReQuery();
 }
 
 GUI_APP_MAIN
