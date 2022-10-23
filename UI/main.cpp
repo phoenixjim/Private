@@ -26,8 +26,6 @@ Private::Private()
 	CtrlLayout(*this, "Private");
 	sqlPrivate.Appending().Removing();
 	sqlPrivate.SetTable(PRIVATE);
-	// txtAddPass << [=] { AddPW(); };
-
 }
 
 GUI_APP_MAIN
