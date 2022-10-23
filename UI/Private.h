@@ -13,7 +13,7 @@ using namespace Upp;
 
 class Private : public WithPrivateLayout<TopWindow> {
 public:
-		Private();
+			Private();
 };
 
 #endif

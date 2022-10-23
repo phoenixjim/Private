@@ -7,16 +7,18 @@
 
 
 class Unlock : public WithGetPassLayout<TopWindow> {
-	public:
-		Unlock();
+public:
+			Unlock();
 };
 
 
 Unlock::Unlock()
 {
 	CtrlLayoutOKCancel(*this, "Unlock");
-	txtPW.Password();
+	txtPW.Password(true);
 	cancel << [=] { Close(); };
+	optShowPW.WhenAction << [=] { txtPW.Password(!(bool)optShowPW.Get()); };
+	optShowPW.Set(false);
 }
 
 Private::Private()
@@ -31,9 +33,11 @@ GUI_APP_MAIN
 	Unlock dlg;
 	if(dlg.Run() != IDOK) return;
 	String password = dlg.txtPW.GetData().ToString();
+	dlg.Close();
+	
 	Sqlite3Session sqlite3;
 	if(!sqlite3.Open("private.db", password)) {
-		PromptOK("Can't create or open database file");
+		PromptOK("Can't create or open database file, or bad password.");
 		return;
 	}
 	
