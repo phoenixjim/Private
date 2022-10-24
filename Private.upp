@@ -10,6 +10,7 @@ file
 	Tables/Private.sch,
 	Tables/sqlIncludes.h,
 	UI/Private.h,
+	UI/addsite.cpp,
 	UI/main.cpp,
 	Private.lay;
 

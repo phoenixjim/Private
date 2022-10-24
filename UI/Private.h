@@ -10,10 +10,18 @@ using namespace Upp;
 
 #define LAYOUTFILE <Private/Private.lay>
 #include <CtrlCore/lay.h>
-
-class Private : public WithPrivateLayout<TopWindow> {
+struct AddSite : public WithAddSiteLayout<TopWindow> {
 public:
-			Private();
+			AddSite();
+	void	addNewSite();
+};
+
+class Secrets : public WithSecretsLayout<TopWindow> {
+public:
+			Secrets();
+			
+			AddSite newsite;
+			
 };
 
 #endif

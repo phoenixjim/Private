@@ -1,6 +1,5 @@
-LAYOUT(PrivateLayout, 344, 220)
-	ITEM(SqlArray, sqlPrivate, LeftPosZ(16, 216).TopPosZ(8, 204))
-	ITEM(Upp::Button, txtAddPass, SetLabel(t_("Add Password")).LeftPosZ(248, 84).TopPosZ(12, 15))
+LAYOUT(SecretsLayout, 228, 220)
+	ITEM(Upp::Button, btnAddSite, SetLabel(t_("Add New Site")).LeftPosZ(8, 84).TopPosZ(16, 15))
 END_LAYOUT
 
 LAYOUT(GetPassLayout, 292, 84)
@@ -10,12 +9,19 @@ LAYOUT(GetPassLayout, 292, 84)
 	ITEM(Upp::Option, optShowPW, SetLabel(t_("Show Password")).LeftPosZ(98, 96).TopPosZ(52, 16))
 END_LAYOUT
 
-LAYOUT(AddPassLayout, 400, 128)
+LAYOUT(NewSiteLayout, 400, 128)
 	ITEM(Upp::EditInt, edtPID, LeftPosZ(36, 32).TopPosZ(16, 19))
 	ITEM(Upp::EditString, edtSite, Tip(t_("\vSite")).LeftPosZ(36, 332).TopPosZ(44, 19))
 	ITEM(Upp::EditString, edtUName, Tip(t_("User Name")).LeftPosZ(36, 160).TopPosZ(72, 19))
 	ITEM(Upp::EditString, edtPWord, Tip(t_("Password")).LeftPosZ(200, 168).TopPosZ(72, 19))
 	ITEM(Upp::Button, ok, SetLabel(t_("Ok")).LeftPosZ(36, 56).TopPosZ(100, 15))
 	ITEM(Upp::Button, cancel, SetLabel(t_("Cancel")).LeftPosZ(312, 56).TopPosZ(100, 15))
+END_LAYOUT
+
+LAYOUT(AddSiteLayout, 400, 200)
+	ITEM(Upp::Button, btnNewSite, SetLabel(t_("Add New Site")).LeftPosZ(160, 80).TopPosZ(176, 15))
+	ITEM(SqlArray, sqlPrivate, LeftPosZ(16, 368).TopPosZ(8, 152))
+	ITEM(Upp::Button, ok, SetLabel(t_("Ok")).LeftPosZ(32, 56).TopPosZ(216, 15))
+	ITEM(Upp::Button, cancel, SetLabel(t_("Close")).LeftPosZ(312, 56).TopPosZ(176, 15))
 END_LAYOUT
 

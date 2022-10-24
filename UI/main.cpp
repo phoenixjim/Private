@@ -22,11 +22,16 @@ Unlock::Unlock()
 	optShowPW.Set(false);
 }
 
-Private::Private()
+Secrets::Secrets()
 {
-	CtrlLayout(*this, "Private");
-	sqlPrivate.Appending().Removing();
-	sqlPrivate.SetTable(PRIVATE);
+	CtrlLayout(*this, "Secrets");
+	
+	btnAddSite << [=] {
+    	if(!newsite.IsOpen()) {
+    		// newsite.sqlPrivate.ReQuery();
+    		newsite.Open(this); 
+    		}
+    };
 }
 
 GUI_APP_MAIN
@@ -37,9 +42,13 @@ GUI_APP_MAIN
 	dlg.Close();
 	
 	Sqlite3Session sqlite3;
-	// AES 256 isn't supported? Only Chaha variants? I'll look deeper into that...
-	if(!sqlite3.Open("private.db", password)) {
-		PromptOK("Can't create or open database file, or bad password.");
+	if(!sqlite3.Open("private.db", password, Sqlite3Session::CIPHER_SQLCIPHER)) {
+		int errCode = sqlite3.GetErrorCode();
+		String errMsg = Format("[ %s&&Error: %d (%s)]", t_("Loading the database has failed!"), errCode, sqlite3.GetErrorCodeString());
+		if (errCode == 26 /* SQLITE_NOTADB */) {
+			errMsg = t_("The database is encrypted but decryption failed!&[= Did you use the correct password?");
+		}
+ 		ErrorOK(errMsg);
 		return;
 	}
 	
@@ -51,5 +60,5 @@ GUI_APP_MAIN
 	SqlPerformScript(sch.Attributes());
 	SQL.ClearError();
 
-	Private().Run();
+	Secrets().Run();
 }
