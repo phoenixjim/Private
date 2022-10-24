@@ -11,6 +11,7 @@ AddNew::AddNew()
 		ctrls
 			(PID, edtPID)
 			(SITENAME, edtSite)
+			(SITEURL, edtURL)
 			(USERNAME, edtUName)
 			(PASSWORD, edtPWord)
 			;
@@ -22,6 +23,7 @@ AddSite::AddSite() {
 	sqlPrivate.SetTable(SITEINFO);
 	sqlPrivate.AddColumn(PID, "ID");
 	sqlPrivate.AddColumn(SITENAME, "Site");
+	sqlPrivate.AddColumn(SITEURL, "URL");
 	sqlPrivate.AddColumn(USERNAME, "User");
 	sqlPrivate.AddColumn(PASSWORD, "PW");
 	
@@ -30,6 +32,7 @@ AddSite::AddSite() {
     	sqlPrivate.ReQuery();
 	};
 	cancel << [=] { Close(); };
+	sqlPrivate.Query();
 }
 void AddSite::addNewSite()
 {
